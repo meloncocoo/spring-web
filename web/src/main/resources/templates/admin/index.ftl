@@ -1,4 +1,6 @@
-<#include '/layout/admin.ftl'>
-<@home title="Administrator">
+<#import '/layout/admin.ftl' as layout>
+<@layout.home title="Administrator">
 <h2>Admin</h2>
-</@home>
+</@layout.home>
+
+<#include '/libs/logout-box.ftl'>

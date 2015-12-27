@@ -70,7 +70,9 @@
                 <li><a href="/admin">Administrator</a></li>
             </ul>
         </div>
-        <p class="navbar-text navbar-right" style="margin-right: 4px">Sponsored by <a href="http://www.meloncocoo.com" class="navbar-link">MelonCocoo</a></p>
+        <p class="navbar-text navbar-right" style="margin-right: 4px">
+        	<#include '/libs/logout-box.ftl'>
+        </p>
     </div>
 </nav>
 </#macro>
