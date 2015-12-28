@@ -70,9 +70,9 @@
                 <li><a href="/admin">Administrator</a></li>
             </ul>
         </div>
-        <p class="navbar-text navbar-right" style="margin-right: 4px">
+        <div class="navbar-right" style="margin: 10px 4px">
         	<#include '/libs/logout-box.ftl'>
-        </p>
+        </div>
     </div>
 </nav>
 </#macro>
