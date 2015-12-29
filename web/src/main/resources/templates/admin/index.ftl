@@ -2,5 +2,3 @@
 <@layout.home title="Administrator">
 <h2>Admin</h2>
 </@layout.home>
-
-<#include '/libs/logout-box.ftl'>

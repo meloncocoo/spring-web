@@ -51,7 +51,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring()
 			.antMatchers("/register")
-			.antMatchers("/console/**");
+			.antMatchers("/console/**")
+			.antMatchers("/webjars/**")
+			.antMatchers("/css/**")
+			.antMatchers("/scripts/**")
+			.antMatchers("/images/**/*.{png}");
 	}
 	
 }

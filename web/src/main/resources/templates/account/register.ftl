@@ -1,3 +1,5 @@
+<#import "/layout/account.ftl" as account>
+<@account.login title="Register">
 <div class="container">
 	<form action="/register" method="POST">
 		<fieldset>
@@ -10,3 +12,4 @@
 		</fieldset>
 	</form>
 </div>
+</@account.login>

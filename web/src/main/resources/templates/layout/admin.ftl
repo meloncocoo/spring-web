@@ -10,6 +10,8 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel='stylesheet' href='/webjars/bootstrap/3.3.6/css/bootstrap.min.css' />
    	<link rel='stylesheet' href='/webjars/font-awesome/4.5.0/css/font-awesome.min.css' />
+   	<link rel="stylesheet" href="/webjars/uniform/2.1.2/themes/default/css/uniform.default.min.css" />
+   	<link rel="stylesheet" href="/css/components.css" />
    	<link rel="stylesheet" href="/css/main.css" />
 </head>
 
@@ -38,6 +40,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel='stylesheet' href='/webjars/bootstrap/3.3.6/css/bootstrap.min.css' />
    	<link rel='stylesheet' href='/webjars/font-awesome/4.5.0/css/font-awesome.min.css' />
+   	<link rel="stylesheet" href="/css/components.css" />
    	<link rel="stylesheet" href="/css/main.css" />
 </head>
 
