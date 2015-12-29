@@ -1,17 +1,6 @@
 <#import "/layout/account.ftl" as account>
 <@account.login title="Sign In">
-<!--form name="login" aciton="/login" method="POST">
-	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-	<fieldset>
-		<label for="username">Username</lable>
-		<input type="text" id="username" name="username" />
-		<label for="password">Password</label>
-		<input type="password" id="password" name="password" />
-		
-		<button type="submit" class="btn">Log in</button>
-	</fieldset>
-</form-->
-<form class="login-form" action="http://www.keenthemes.com/preview/metronic/templates/admin/index.html" method="post">
+<form class="login-form" action="/login" method="post">
 	<h3 class="form-title">Login to your account</h3>
 	<div class="alert alert-danger display-hide">
 		<button class="close" data-close="alert"></button>
@@ -49,4 +38,29 @@
 		</p>
 	</div>
 </form>
+<script>
+function ajax(options) {
+	options = $.extend({
+		type: "POST",
+		contentType: "application/x-www-form-urlencoded"
+	}, options);
+	
+	options.success = function(html) {
+		$(".content").html(html);
+	};
+	options.error = function() {
+		alert("error");
+	};
+	
+	$.ajax(options);
+}
+function getRegister() {
+	var options = {
+		url: "/register",
+		type: "GET"
+	};
+	ajax(options);
+}
+</script>
+<a href="javascript:getRegister();">AJAX</a>
 </@account.login>

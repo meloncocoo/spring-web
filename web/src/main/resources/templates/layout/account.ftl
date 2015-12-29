@@ -28,6 +28,7 @@
     <script src="/webjars/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
     <script src="/webjars/bootstrap/3.3.6/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/webjars/uniform/2.1.2/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="/webjars/jquery-blockui/2.65/jquery.blockUI.js" type="text/javascript"></script>
     <script src="/scripts/melon.js" type="text/javascript"></script>
     
     <script>

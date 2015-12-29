@@ -20,7 +20,9 @@ public class AccountController {
 	}
 
 	@RequestMapping("/register")
-	String registerAccount() {
+	String registerAccount() throws Exception {
+		//Thread.currentThread();
+		Thread.sleep(3000);
 		return "account/register";
 	}
 	
