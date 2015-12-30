@@ -130,14 +130,6 @@ var Melon = function() {
 	
 	Ajax.prototype.request = function() {
 		var options = this.options;
-
-		options.success = function(html) {
-			$(".content").html(html);
-		};
-		options.error = function() {
-			alert("error");
-		};
-
 		var $target = $(this.options.target);
 		$.get( options.url ).then(
 			function(html) {

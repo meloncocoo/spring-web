@@ -20,7 +20,7 @@ import mln.spring.repository.UserRepository;
  *
  */
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
 
 	private final Logger log = LoggerFactory.getLogger(UserController.class);
@@ -29,17 +29,13 @@ public class UserController {
 	
 	@RequestMapping
 	String index(Model model, 
-			Pageable pageable, @RequestParam MultiValueMap<String, String> parameters) {
+			Pageable pageable, @RequestParam MultiValueMap<String, String> parameters) throws Exception {
 		
 		log.debug("Find all users: page -> {}, size -> {}, sort: {}", pageable.getPageNumber(), pageable.getPageSize(), pageable.getSort());
 		model.addAttribute("users", userRepository.findAll(pageable));
+		Thread.sleep(1000);
 		
-//		List<User> users = new ArrayList<User>();
-//		User user = new User("melon", "nimda_wen@hotmail.com", "This is a test user.");
-//		users.add(user);
-//		model.addAttribute("users", users);
-		
-		return "users/index";
+		return "user/index";
 	}
 	
 }

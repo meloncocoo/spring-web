@@ -8,6 +8,13 @@
 		</button>
 		<span>${msg}</span>
 	</div>
+	<#elseif msg??>
+	<div class="alert alert-success">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		<span>${msg}</span>
+	</div>
 	</#if>
 	<div class="form-group">
 		<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->

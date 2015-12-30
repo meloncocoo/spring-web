@@ -64,7 +64,7 @@
             <a class="navbar-brand " href="/">Home</a>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Documentation</a></li>
-                <li><a href="/">NPM WebJars</a></li>
+                <li><a href="javascript:void(0);" data-toggle="ajax" data-target="body > .container" data-url="/user">Users</a></li>
                 <li><a href="/">Bower WebJars</a></li>
                 <li><a href="/">Classic WebJars</a></li>
                 <li><a href="/admin">Administrator</a></li>

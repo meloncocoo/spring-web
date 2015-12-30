@@ -1,0 +1,7 @@
+/build/**/*
+/target/**/*
+/gradle/**/*
+/bin/**/*
+.*
+!.gitignore
+/testFile.log

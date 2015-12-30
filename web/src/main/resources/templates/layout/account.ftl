@@ -32,12 +32,6 @@
     <script src="/webjars/uniform/2.1.2/jquery.uniform.min.js" type="text/javascript"></script>
     <script src="/webjars/jquery-blockui/2.65/jquery.blockUI.js" type="text/javascript"></script>
     <script src="/scripts/melon-core.js" type="text/javascript"></script>
-    
-    <script>
-    	jQuery(document).ready(function() {
-    		Melon.init();
-    	});
-    </script>
 </body>
 </html>
 </#macro>
