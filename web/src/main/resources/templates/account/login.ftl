@@ -1,13 +1,12 @@
-<#import "/layout/account.ftl" as account>
-<@account.login title="Sign In">
-<form class="login-form" action="/login" method="post">
+<form class="login-form" action="/account/login" method="post">
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	<h3 class="form-title">Login to your account</h3>
 	<#if error??>
 	<div class="alert alert-danger">
-		<button class="close" data-close="alert"></button>
-		<span>
-		Enter any username and password. </span>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		<span>${msg}</span>
 	</div>
 	</#if>
 	<div class="form-group">
@@ -35,11 +34,9 @@
 	<div class="forget-password">
 		<h4>Forgot your password ?</h4>
 		<p>
-			 no worries, click <a href="javascript:;" id="forget-password">
+			 no worries, click <a href="javascript:void(0);" data-toggle="ajax" data-target=".content" data-url="/account/forgot">
 			here </a>
 			to reset your password.
 		</p>
 	</div>
 </form>
-<a href="javascript:void(0);" data-toggle="ajax" data-target=".content" data-url="/register">AJAX</a>
-</@account.login>

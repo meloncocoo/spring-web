@@ -4,6 +4,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="_csrf" content="${_csrf.token}" />
+    <meta name="_csrf_header" content="${_csrf.headerName}" />
     <title>${title} - ${site_name}</title>
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel='stylesheet' href='/webjars/bootstrap/3.3.6/css/bootstrap.min.css' />
@@ -30,7 +32,6 @@
     <script src="/webjars/uniform/2.1.2/jquery.uniform.min.js" type="text/javascript"></script>
     <script src="/webjars/jquery-blockui/2.65/jquery.blockUI.js" type="text/javascript"></script>
     <script src="/scripts/melon-core.js" type="text/javascript"></script>
-    <script src="/scripts/melon.js" type="text/javascript"></script>
     
     <script>
     	jQuery(document).ready(function() {

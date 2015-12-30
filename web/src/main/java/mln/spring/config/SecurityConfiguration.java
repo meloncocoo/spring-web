@@ -35,22 +35,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
+				.antMatchers("/account/**").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
-				.loginPage("/login")
+				.loginPage("/account")
+				.loginProcessingUrl("/account/login")
 				.permitAll()
 				.and()
 			.logout()
 				.logoutUrl("/logout")
-				.logoutSuccessUrl("/login")
+				.logoutSuccessUrl("/account")
 				.invalidateHttpSession(true);			
 	}
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring()
-			.antMatchers("/register")
 			.antMatchers("/console/**")
 			.antMatchers("/webjars/**")
 			.antMatchers("/css/**")
