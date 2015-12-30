@@ -18,7 +18,7 @@
 <body class="login">
 
 	<div class="logo">
-		<a href="index-2.html">
+		<a href="/">
 		<img src="/images/logo.png" alt="">
 		</a>
 	</div>

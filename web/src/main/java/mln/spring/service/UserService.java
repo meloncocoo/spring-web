@@ -43,6 +43,13 @@ public class UserService {
         Authority authority = authorityRepository.findOne("ROLE_USER");
         Set<Authority> authorities = new HashSet<>();
         String encryptedPassword = passwordEncoder.encode(password);
+        
+        if (null == authority) {
+        	authority = new Authority();
+        	authority.setName("ROLE_USER");
+        	authorityRepository.save(authority);
+        }
+        
         newUser.setLogin(login);
         // new user gets initially a generated password
         newUser.setPassword(encryptedPassword);

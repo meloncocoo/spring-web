@@ -7,12 +7,13 @@ logging:
     org.apache: false
     freemarker.cache: false
     org.hibernate: false
+    javax.activation: false
 spring:
   datasource:
     dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
-    url: jdbc:mysql://localhost:3306/payroll?useUnicode=true&characterEncoding=utf8
-    username: payroll
-    password: payroll
+    url: jdbc:mysql://localhost:3306/spring?useUnicode=true&characterEncoding=utf8
+    username: spring
+    password: spring
   jpa:
     database-platform: org.hibernate.dialect.MySQLInnoDBDialect
     database: MYSQL
