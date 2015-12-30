@@ -19,7 +19,7 @@ public class AccountController {
 		return "account/login";
 	}
 
-	@RequestMapping("/register")
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	String registerAccount() throws Exception {
 		//Thread.currentThread();
 		Thread.sleep(3000);

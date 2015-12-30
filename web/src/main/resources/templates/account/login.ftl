@@ -1,12 +1,15 @@
 <#import "/layout/account.ftl" as account>
 <@account.login title="Sign In">
 <form class="login-form" action="/login" method="post">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	<h3 class="form-title">Login to your account</h3>
-	<div class="alert alert-danger display-hide">
+	<#if error??>
+	<div class="alert alert-danger">
 		<button class="close" data-close="alert"></button>
 		<span>
 		Enter any username and password. </span>
 	</div>
+	</#if>
 	<div class="form-group">
 		<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
 		<label class="control-label visible-ie8 visible-ie9">Username</label>
@@ -38,29 +41,5 @@
 		</p>
 	</div>
 </form>
-<script>
-function ajax(options) {
-	options = $.extend({
-		type: "POST",
-		contentType: "application/x-www-form-urlencoded"
-	}, options);
-	
-	options.success = function(html) {
-		$(".content").html(html);
-	};
-	options.error = function() {
-		alert("error");
-	};
-	
-	$.ajax(options);
-}
-function getRegister() {
-	var options = {
-		url: "/register",
-		type: "GET"
-	};
-	ajax(options);
-}
-</script>
-<a href="javascript:getRegister();">AJAX</a>
+<a href="javascript:void(0);" data-toggle="ajax" data-target=".content" data-url="/register">AJAX</a>
 </@account.login>

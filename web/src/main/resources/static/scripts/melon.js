@@ -95,7 +95,6 @@ var Melon = function() {
 
     return {
     	init: function() {
-	    	// Core handlers
 	    	handleInit();
 	    	handleUniform();
     	},
