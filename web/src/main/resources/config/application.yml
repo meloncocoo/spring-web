@@ -3,7 +3,8 @@ logging:
   level:
     root: DEBUG
     sun.rmi: false
-    org.springframework: false
+#    org.springframework: false
+    org.springframework.boot: false
     org.apache: false
     freemarker.cache: false
     org.hibernate: false
@@ -33,3 +34,6 @@ spring:
 security:
   basic:
     enabled: false
+    
+
+    
