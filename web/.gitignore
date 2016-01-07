@@ -4,4 +4,4 @@
 /bin/
 .*
 !.gitignore
-/testFile.log
+/*.log*
