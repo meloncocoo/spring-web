@@ -1,7 +1,7 @@
+/build/**/*
+/target/**/*
+/gradle/**/*
+/bin/**/*
+.*
 !.gitignore
-/**/build/**/*
-/**/target/**/*
-/**/gradle/**/*
-/**/bin/**/*
-/**/.*
-/**/*.log*
+/*.log*

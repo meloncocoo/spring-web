@@ -1,13 +1,13 @@
 logging:
   file: testFile.log
   level:
-    root: DEBUG
+    root: INFO
     sun.rmi: false
 #    org.springframework: false
-    org.springframework.boot: false
-    org.apache: false
+#    org.springframework.boot: false
     freemarker.cache: false
     org.hibernate: false
+    org.apache: false
     javax.activation: false
 spring:
   datasource:
