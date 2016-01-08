@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http
 			.formLogin()
 			.loginPage("/account")
-			.loginProcessingUrl("/account/login")
+			.loginProcessingUrl("/login")
 			.permitAll()
 		.and()
 			.logout()
@@ -47,7 +47,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.exceptionHandling().accessDeniedPage("/403")
 		.and()
 			.authorizeRequests()
-			.antMatchers("/account/login").permitAll()
+			.antMatchers("/account/**").permitAll()
+			.antMatchers("/api/language").permitAll()
 			.antMatchers("/403").permitAll()
 			.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
 			.anyRequest().authenticated();

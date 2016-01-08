@@ -114,7 +114,7 @@ var Melon = function() {
 	'use strict';
 
 	var Ajax = function(element, options) {
-		this.$element	= $(element);
+		this.element	= $(element);
 		this.options 	= $.extend({}, Ajax.DEFAULTS, options);
 		
 		this.request();
@@ -130,13 +130,18 @@ var Melon = function() {
 	
 	Ajax.prototype.request = function() {
 		var options = this.options;
+		var $this	= this.element;
 		var $target = $(this.options.target);
+		var successEvent = $.Event('success.mln.ajax', {
+			relatedTarget: $this[0]
+		});
 		$.get( options.url ).then(
 			function(html) {
 				$target.html(html);
+				$this.trigger(successEvent);
 				Melon.handleUniform();
 			}, function(jqXHR, textStatus, errorThrown) {
-				alert(textStatus);
+//				alert(textStatus);
 			}
 		);
 	};

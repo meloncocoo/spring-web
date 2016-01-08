@@ -4,6 +4,6 @@
 	<#if msg??>
 	<h2>${msg}</h2>
 	</#if>
-	<a href="javascript:history.back();" title="Back">Back</a>
+	<a href="/" title="Back">Back To Home</a>
 </body>
 </html>
