@@ -42,7 +42,7 @@ public class AccountController {
 		return "account/index";
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.HEAD}, headers = "x-requested-with=XMLHttpRequest")
 	ModelAndView login(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout) throws Exception {
 		Thread.sleep(1000);
@@ -69,7 +69,7 @@ public class AccountController {
 		return "account/register";
 	}
 	
-	@RequestMapping(value = "/forgot", method = RequestMethod.GET)
+	@RequestMapping(value = "/forgot", method = {RequestMethod.GET, RequestMethod.HEAD}, headers = "x-requested-with=XMLHttpRequest")
 	String forgotAccount() throws Exception {
 		Thread.sleep(1000);
 		return "account/forgot";
