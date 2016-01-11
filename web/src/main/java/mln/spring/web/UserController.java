@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import mln.spring.repository.UserRepository;
@@ -27,7 +28,7 @@ public class UserController {
 	
 	@Autowired UserRepository userRepository;
 	
-	@RequestMapping
+	@RequestMapping(method = {RequestMethod.GET, RequestMethod.HEAD}, headers = "x-requested-with=XMLHttpRequest")
 	String index(Model model, 
 			Pageable pageable, @RequestParam MultiValueMap<String, String> parameters) throws Exception {
 		

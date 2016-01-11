@@ -44,12 +44,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.logoutSuccessUrl("/")
 			.invalidateHttpSession(true)
 		.and()
-			.exceptionHandling().accessDeniedPage("/403")
-		.and()
 			.authorizeRequests()
 			.antMatchers("/account/**").permitAll()
 			.antMatchers("/api/language").permitAll()
-			.antMatchers("/403").permitAll()
 			.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
 			.anyRequest().authenticated();
 	}

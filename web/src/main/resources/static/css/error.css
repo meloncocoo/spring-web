@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+/***
+Error Pages
+***/
+/* 500 page option #1 */
+.error-page {
+  text-align: center;
+}
+
+.error-page .number {
+  display: inline-block;
+  letter-spacing: -10px;
+  line-height: 128px;
+  font-size: 128px;
+  font-weight: 300;
+  color: #ec8c8c;
+  text-align: right;
+}
+
+.error-page .details {
+  margin-left: 40px;
+  display: inline-block;
+  text-align: left;
+}
+
+/* 500 page option #2*/
+.error-page-full-page {
+  overflow-x: hidden;
+  padding: 20px;
+  background-color: #fafafa !important;
+}
+
+.error-page-full-page .details input {
+  background-color: #ffffff;
+}
+
+.error-page-full-page .error-page {
+  margin-top: 100px;
+}
