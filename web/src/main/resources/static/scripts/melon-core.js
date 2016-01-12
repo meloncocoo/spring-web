@@ -106,9 +106,62 @@ var Melon = function() {
     	unblockUI: function(options) {
     		unblockUI(unblockUI);
     	},
-    	handleUniform: function() {
-    		handleUniform();
-    	}
+        alert: function(options) {
+
+            options = $.extend(true, {
+                container: "", // alerts parent container(by default placed after the page breadcrumbs)
+                place: "append", // append or prepent in container 
+                type: 'success',  // alert's type
+                message: "",  // alert's message
+                close: true, // make alert closable
+                reset: true, // close all previouse alerts first
+                focus: true, // auto scroll to the alert after shown
+                closeInSeconds: 0, // auto close after defined seconds
+                icon: "" // put icon before the message
+            }, options);
+
+            var id = Metronic.getUniqueID("Metronic_alert");
+
+            var html = '<div id="'+id+'" class="Metronic-alerts alert alert-'+options.type+' fade in">' + (options.close ? '<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>' : '' ) + (options.icon != "" ? '<i class="fa-lg fa fa-'+options.icon + '"></i>  ' : '') + options.message+'</div>'
+
+            if (options.reset) {0
+                $('.Metronic-alerts').remove();
+            }
+
+            if (!options.container) {
+                $('.page-breadcrumb').after(html);
+            } else {
+                if (options.place == "append") {
+                    $(options.container).append(html);
+                } else {
+                    $(options.container).prepend(html);
+                }
+            }
+
+            if (options.focus) {
+                Metronic.scrollTo($('#' + id));
+            }
+
+            if (options.closeInSeconds > 0) {
+                setTimeout(function(){
+                    $('#' + id).remove();
+                }, options.closeInSeconds * 1000);
+            }
+        },
+
+        // initializes uniform elements
+        initUniform: function (els) {
+            if (els) {
+                $(els).each(function () {
+                    if ($(this).parents(".checker").size() == 0) {
+                        $(this).show();
+                        $(this).uniform();
+                    }
+                });
+            } else {
+                handleUniform();
+            }
+        }
     };
 }();
 

@@ -49,7 +49,9 @@
 	</div>
 </form>
 <script>
-$(document).ready(function() {
-	Melon.handleUniform();
-});
+if (typeof jQuery != 'undefined') {
+	$(document).ready(function() {
+		Melon.initUniform();
+	});
+}
 </script>    
