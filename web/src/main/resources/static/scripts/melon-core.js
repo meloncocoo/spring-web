@@ -74,7 +74,9 @@ var Melon = function() {
 		$(document).ajaxStart ? $(document).ajaxStart(function() {
 			blockUI()
 		}).ajaxStop(function() {
-			unblockUI(); 
+			unblockUI();
+		}).ajaxError(function(event, request, settings) {
+			alert(request.status);
 		}) : null;
 	};
 	
@@ -110,17 +112,23 @@ var Melon = function() {
     };
 }();
 
+/* ========================================================================
+ * Melon-jQuery: Ajax.js v1.0.1
+ * http://www.meloncocoo.com
+ * ========================================================================
+ * Copyright 2015-2016 Melon, Inc.
+ * Licensed under MIT (https://github.com/meloncocoo/melon-jquery/master/LICENSE)
+ * ======================================================================== */
+
 +function($) {
 	'use strict';
 
 	var Ajax = function(element, options) {
 		this.element	= $(element);
 		this.options 	= $.extend({}, Ajax.DEFAULTS, options);
-		
-		this.request();
 	};
 	
-	Ajax.VERSION 				= '0.0.1';
+	Ajax.VERSION 				= '1.0.1';
 	Ajax.DEFAULT_CONTENT_TYPE 	= 'application/x-www-form-urlencoded';
 	Ajax.DEFAULT_METHOD			= 'GET';
 	Ajax.DEFAULTS				= {
@@ -129,39 +137,34 @@ var Melon = function() {
 	};
 	
 	Ajax.prototype.request = function() {
-		var options = this.options;
-		var $this	= this.element;
-		var $target = $(this.options.target);
+		var options 	= this.options;
+		var $this		= this.element;
+		var href, url	= $this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '');
 		var successEvent = $.Event('success.mln.ajax', {
 			relatedTarget: $this[0]
 		});
-		$.get( options.url ).then(
+		var failureEvent = $.Event('failure.mln.ajax', {
+			relatedTarget: $this[0]
+		});
+		$.get(url).then(
 			function(html) {
-				$target.html(html);
+				var $target = $($this.attr('data-replace'));
+				if ($target) $target.html(html);
 				$this.trigger(successEvent);
-				Melon.handleUniform();
 			}, function(jqXHR, textStatus, errorThrown) {
-//				alert(textStatus);
+				$this.trigger(failureEvent);
 			}
 		);
 	};
-
-	function getOptionFromTrigger($trigger) {
-		return $.extend({}, {
-			url: 		$trigger.attr('data-url'),
-			type: 		$trigger.attr('data-method'),
-			target: 	$trigger.attr('data-target')
-		});
-	}
 
 	function Plugin(option) {
 		return this.each(function() {
 			var $this   = $(this)
 			var data	= $this.data('mln.ajax');
-			var options = $.extend({}, Ajax.DEFAULTS, $this.data(), typeof option == 'object' && option)
+			var options = typeof option == 'object' && option;
 			
 			if (!data) $this.data('mln.ajax', (data = new Ajax(this, options)));
-			if (typeof option == 'string') data[option].call($this);
+			if (typeof option == 'string') data[option].call(data);
 		});
 	}
 	
@@ -182,13 +185,9 @@ var Melon = function() {
 	// ===============
 
 	$(document).on('click.mln.ajax.data-api', '[data-toggle="ajax"]', function(e) {
-		var $this   = $(this)
-		
+		var $this   = $(this)		
 		if (!$this.attr('data-target')) e.preventDefault();
-		
-	    var options = getOptionFromTrigger($this);
-
-	    Plugin.call($this, options);
+	    Plugin.call($this, 'request');
 	});
 }(jQuery);
 

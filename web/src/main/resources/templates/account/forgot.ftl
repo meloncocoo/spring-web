@@ -10,10 +10,17 @@
 		</div>
 	</div>
 	<div class="form-actions">
-		<button type="button" class="btn" data-toggle="ajax" data-target=".content" data-url="/account/login">
+		<button type="button" class="btn" data-toggle="ajax" data-replace=".content" data-target="/account/login">
 		<i class="m-icon-swapleft"></i> <@spring.message "button.back.label" /> </button>
 		<button type="submit" class="btn green pull-right">
 		<@spring.message "button.submit.label" /> <i class="m-icon-swapright m-icon-white"></i>
 		</button>
 	</div>
 </form>
+<script>
+	$(document).ready(function() {
+		$('[data-toggle="ajax"]').on('success.mln.ajax', function() {
+			Melon.handleUniform();
+		});
+	});
+</script>

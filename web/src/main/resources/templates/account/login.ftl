@@ -42,9 +42,14 @@
 	<div class="forget-password">
 		<h4><@spring.message "account.forget.label" /></h4>
 		<p>
-			 no worries, click <a href="javascript:void(0);" data-toggle="ajax" data-target=".content" data-url="/account/forgot">
+			 no worries, click <a href="/account/forgot" data-toggle="ajax" data-replace=".content">
 			here </a>
 			to reset your password.
 		</p>
 	</div>
 </form>
+<script>
+$(document).ready(function() {
+	Melon.handleUniform();
+});
+</script>    

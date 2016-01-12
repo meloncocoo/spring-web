@@ -1,12 +1,13 @@
-<h2>Users</h2>
+<#import "/spring.ftl" as spring>
+<h3><@spring.message "user.allUsers" /></h3>
 
 <table class="table table-bordered table-condensed">
 	<thead>
-		<th>Full Name</th>
-		<th>User Name</th>
-		<th>Email</th>
-		<th>Activated</th>
-		<th>Locked</th>
+		<th><@spring.message "user.fullName" /></th>
+		<th><@spring.message "user.login" /></th>
+		<th><@spring.message "user.email" /></th>
+		<th><@spring.message "user.activated" /></th>
+		<th><@spring.message "user.locked" /></th>
 	</thead>
 	<tbody>
 	<#list users.content as user>

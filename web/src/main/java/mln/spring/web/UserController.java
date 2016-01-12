@@ -32,7 +32,7 @@ public class UserController {
 	String index(Model model, 
 			Pageable pageable, @RequestParam MultiValueMap<String, String> parameters) throws Exception {
 		
-		log.debug("Find all users: page -> {}, size -> {}, sort: {}", pageable.getPageNumber(), pageable.getPageSize(), pageable.getSort());
+		log.info("Find all users: page -> {}, size -> {}, sort: {}", pageable.getPageNumber(), pageable.getPageSize(), pageable.getSort());
 		model.addAttribute("users", userRepository.findAll(pageable));
 		Thread.sleep(1000);
 		
