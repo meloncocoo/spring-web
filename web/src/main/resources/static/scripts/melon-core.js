@@ -76,7 +76,7 @@ var Melon = function() {
 		}).ajaxStop(function() {
 			unblockUI();
 		}).ajaxError(function(event, request, settings) {
-			alert(request.status);
+//			alert(request.status);
 		}) : null;
 	};
 	
@@ -94,11 +94,22 @@ var Melon = function() {
             });
         }
     };
+    
+    var handleHorMenu = function () {
+    	var test = $(".hor-menu > UL.nav.navbar-nav > li");
+    	test.on("click", function() {
+    		test.removeClass("active");
+    		test.find("span.selected").remove();
+    		$(this).addClass("active");
+    		$(this).append("<span class='selected'></span>");
+    	});
+    }
 
     return {
     	init: function() {
 	    	handleInit();
 	    	handleUniform();
+	    	handleHorMenu();
     	},
     	blockUI: function(options) {
     		blockUI(options);
@@ -106,6 +117,9 @@ var Melon = function() {
     	unblockUI: function(options) {
     		unblockUI(unblockUI);
     	},
+    	getUniqueID: function(prefix) {
+            return 'prefix_' + Math.floor(Math.random() * (new Date()).getTime());
+        },
         alert: function(options) {
 
             options = $.extend(true, {
@@ -120,12 +134,12 @@ var Melon = function() {
                 icon: "" // put icon before the message
             }, options);
 
-            var id = Metronic.getUniqueID("Metronic_alert");
+            var id = Melon.getUniqueID("Melon_alert");
 
-            var html = '<div id="'+id+'" class="Metronic-alerts alert alert-'+options.type+' fade in">' + (options.close ? '<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>' : '' ) + (options.icon != "" ? '<i class="fa-lg fa fa-'+options.icon + '"></i>  ' : '') + options.message+'</div>'
+            var html = '<div id="'+id+'" class="Melon-alerts alert alert-'+options.type+' fade in">' + (options.close ? '<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>' : '' ) + (options.icon != "" ? '<i class="fa-lg fa fa-'+options.icon + '"></i>  ' : '') + options.message+'</div>'
 
             if (options.reset) {0
-                $('.Metronic-alerts').remove();
+                $('.Melon-alerts').remove();
             }
 
             if (!options.container) {
@@ -137,10 +151,10 @@ var Melon = function() {
                     $(options.container).prepend(html);
                 }
             }
-
-            if (options.focus) {
-                Metronic.scrollTo($('#' + id));
-            }
+//
+//            if (options.focus) {
+//                Melon.scrollTo($('#' + id));
+//            }
 
             if (options.closeInSeconds > 0) {
                 setTimeout(function(){
@@ -205,7 +219,7 @@ var Melon = function() {
 				if ($target) $target.html(html);
 				$this.trigger(successEvent);
 			}, function(jqXHR, textStatus, errorThrown) {
-				$this.trigger(failureEvent);
+				$this.trigger(failureEvent, [jqXHR, textStatus, errorThrown]);
 			}
 		);
 	};

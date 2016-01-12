@@ -1,5 +1,6 @@
 <#import "/spring.ftl" as spring>
-<h3><@spring.message "role.allRoles" /></h3>
+<#import "/libs/page.ftl" as page>
+<@page.breadcrumb "role.allRoles" "page.list" />
 <table class="table table-bordered table-condensed">
 	<thead>
 		<th><@spring.message "role.name" /></th>
