@@ -3,27 +3,27 @@
 <@page.breadcrumb "user.allUsers" "page.list" />
 <div class="row">
 	<div class="col-md-12">
-		<h3><@spring.message "user.allUsers" /></h3>
-		
-		<table class="table table-bordered table-condensed">
-			<thead>
-				<th><@spring.message "user.fullName" /></th>
-				<th><@spring.message "user.login" /></th>
-				<th><@spring.message "user.email" /></th>
-				<th><@spring.message "user.activated" /></th>
-				<th><@spring.message "user.locked" /></th>
-			</thead>
-			<tbody>
-			<#list users.content as user>
-				<tr>
-					<td>${user.getFullName()}</td>
-					<td>${user.getLogin()}</td>
-					<td>${user.getEmail()}</td>
-					<td>${user.isActivated()?string('yes', 'no')}</td>
-					<td>${user.isLocked()?string('yes', 'no')}</td>
-				<tr>
-			</#list>
-			</tbody>
-		</table>
+		<div class="table-scrollable">
+			<table class="table table-striped table-hover">
+				<thead>
+					<th><@spring.message "user.fullName" /></th>
+					<th><@spring.message "user.login" /></th>
+					<th><@spring.message "user.email" /></th>
+					<th class="text-center"><@spring.message "user.activated" /></th>
+					<th class="text-center"><@spring.message "user.locked" /></th>
+				</thead>
+				<tbody>
+				<#list users.content as user>
+					<tr>
+						<td>${user.getFullName()}</td>
+						<td>${user.getLogin()}</td>
+						<td>${user.getEmail()}</td>
+						<td class="text-center">${user.isActivated()?string('<span class="fa fa-check-circle"></span>', '<span class="fa fa-times-circle"></span>')}</td>
+						<td class="text-center">${user.isLocked()?string('<span class="fa fa-check-circle"></span>', '<span class="fa fa-times-circle"></span>')}</td>
+					<tr>
+				</#list>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
