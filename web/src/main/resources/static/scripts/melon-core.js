@@ -5,6 +5,14 @@ var Melon = function() {
 	
 	var assetsPath = '/';
 	var globalImgPath = assetsPath + 'images/global/';
+	var brandColors = {
+	        'blue': '#89C4F4',
+	        'red': '#F3565D',
+	        'green': '#1bbc9b',
+	        'purple': '#9b59b6',
+	        'grey': '#95a5a6',
+	        'yellow': '#F8CB00'
+	    };
 	
     var blockUI = function (options) {
         var options = $.extend(true, {}, options);
@@ -96,7 +104,7 @@ var Melon = function() {
     };
     
     var handleHorMenu = function () {
-    	var test = $(".hor-menu > UL.nav.navbar-nav > li");
+    	var test = $(".hor-menu > UL.nav.navbar-nav > li, .top-menu > UL.nav.navbar-nav > li");
     	test.on("click", function() {
     		test.removeClass("active");
     		test.find("span.selected").remove();
@@ -174,6 +182,14 @@ var Melon = function() {
                 });
             } else {
                 handleUniform();
+            }
+        },
+        
+        getBrandColor: function (name) {
+            if (brandColors[name]) {
+                return brandColors[name];
+            } else {
+                return '';
             }
         }
     };

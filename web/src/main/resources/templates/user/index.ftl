@@ -6,6 +6,7 @@
 		<div class="table-scrollable">
 			<table class="table table-condensed table-hover">
 				<thead>
+					<th><input type="checkbox" /></th>
 					<th><@spring.message "user.fullName" /></th>
 					<th><@spring.message "user.login" /></th>
 					<th><@spring.message "user.email" /></th>
@@ -15,6 +16,7 @@
 				<tbody>
 				<#list users.content as user>
 					<tr>
+						<td><input type="checkbox" /></td>
 						<td>${user.getFullName()}</td>
 						<td>${user.getLogin()}</td>
 						<td>${user.getEmail()}</td>
@@ -27,3 +29,10 @@
 		</div>
 	</div>
 </div>
+<script>
+if (typeof jQuery != 'undefined') {
+	$(document).ready(function() {
+		Melon.initUniform();
+	});
+}
+</script>

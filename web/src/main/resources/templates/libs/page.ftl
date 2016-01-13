@@ -1,10 +1,10 @@
 <#import "/spring.ftl" as spring>
-<#macro breadcrumb title subTitle>
+<#macro breadcrumb title subTitle="">
 <div class="row">
 	<div class="col-md-12">
 		<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 		<h3 class="page-title">
-		<@spring.message title /> <small><@spring.message subTitle /></small>
+		<@spring.message title /> <#if subTitle != ""><small><@spring.message subTitle /></small></#if>
 		</h3>
 		<ul class="page-breadcrumb breadcrumb">
 			<li class="btn-group">
@@ -28,10 +28,6 @@
 		</div>
 		<div class="tools">
 			<a href="javascript:;" class="reload"></a>
-		</div>
-		<div class="actions">
-			<a href="#" class="btn btn-default btn-sm">
-			<i class="fa fa-share"></i> Share </a>
 		</div>
 	</div>
 	<div class="portlet-body">
