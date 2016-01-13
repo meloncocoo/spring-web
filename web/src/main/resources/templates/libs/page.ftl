@@ -8,49 +8,34 @@
 		</h3>
 		<ul class="page-breadcrumb breadcrumb">
 			<li class="btn-group">
-				<button type="button" class="btn blue dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
-				<span>
-				Actions </span>
-				<i class="fa fa-angle-down"></i>
-				</button>
-				<ul class="dropdown-menu pull-right" role="menu">
-					<li>
-						<a href="#">
-						Action </a>
-					</li>
-					<li>
-						<a href="#">
-						Another action </a>
-					</li>
-					<li>
-						<a href="#">
-						Something else here </a>
-					</li>
-					<li class="divider">
-					</li>
-					<li>
-						<a href="#">
-						Separated link </a>
-					</li>
-				</ul>
+				<button href="javascript:;" class="btn blue"><i class="fa fa-refresh"></i> 刷新</button>
 			</li>
 			<li>
-				<i class="fa fa-home"></i>
-				<a href="#">
-				Home </a>
-				<i class="fa fa-angle-right"></i>
+				<i class="fa fa-home"></i> <a href="/"> <@spring.message "menu.root.home.label" /> </a> <i class="fa fa-angle-right"></i>
 			</li>
-			<li>
-				<a href="#">
-				Page Layouts </a>
-				<i class="fa fa-angle-right"></i>
-			</li>
-			<li>
-				<a href="#">
-				Horizontal Mega Menu 1 </a>
-			</li>
+			<li><@spring.message title /></li>
 		</ul>
 		<!-- END PAGE TITLE & BREADCRUMB-->
+	</div>
+</div>
+</#macro>
+
+<#macro portlet title="" type="">
+<div class="portlet ${type}">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class="fa fa-gift"></i> ${title}
+		</div>
+		<div class="tools">
+			<a href="javascript:;" class="reload"></a>
+		</div>
+		<div class="actions">
+			<a href="#" class="btn btn-default btn-sm">
+			<i class="fa fa-share"></i> Share </a>
+		</div>
+	</div>
+	<div class="portlet-body">
+		<#nested>
 	</div>
 </div>
 </#macro>

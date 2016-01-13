@@ -22,13 +22,18 @@
 	<@header.navbar_fixed_top title />
 
 	<div class="page-container">
+		<div class="page-sidebar-wrapper">
+			<div class="page-sidebar navbar-collapse collapse">
+			<@header.topmenu 'class="page-sidebar-menu" data-slide-speed="200" data-auto-scroll="true"' />
+			</div>
+		</div>
+		
 		<div class="page-content-wrapper">
 		    <div class="page-content">
 		        <#nested>
 		    </div>
 	    </div>
     </div>
-    <div class="container"></div>
     
     <script src="/webjars/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
     <script src="/webjars/bootstrap/3.3.6/js/bootstrap.js" type="text/javascript"></script>

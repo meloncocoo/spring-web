@@ -2861,7 +2861,8 @@ Portlets
   padding: 0px;
 }
 .portlet > .portlet-title {
-  margin-bottom: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border-bottom: 1px solid #eee;
 }
 .portlet > .portlet-title:before, .portlet > .portlet-title:after {
@@ -3724,7 +3725,7 @@ Responsive & Scrollable Tables
   overflow-x: auto;
   overflow-y: hidden;
   border: 1px solid #dddddd;
-  margin: 10px 0 !important;
+  margin: 0 !important;
 }
 .table-scrollable > .table {
   width: 100% !important;

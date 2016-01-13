@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import mln.spring.repository.AuthorityRepository;
 
@@ -18,6 +19,8 @@ public class AdminController {
 	private final Logger log = LoggerFactory.getLogger(AdminController.class);
 	
 	@Autowired AuthorityRepository authorityRepository;
+	
+	@Autowired RequestMappingHandlerMapping requestMappingHandlerMapping;
 
 	@RequestMapping("")
 	String index() {
@@ -30,6 +33,12 @@ public class AdminController {
 		model.addAttribute("roles", authorityRepository.findAll(pageable));
 		Thread.sleep(500);
 		return "admin/role";
+	}
+	
+	@RequestMapping(value = "/endPoints", method = {RequestMethod.GET, RequestMethod.HEAD}, headers = "x-requested-with=XMLHttpRequest")
+	String getEndPointsInView(Model model) {
+		model.addAttribute("endPoints", requestMappingHandlerMapping.getHandlerMethods().keySet());
+		return "admin/endPoints";
 	}
 	
 }

@@ -34,7 +34,7 @@ public class UserController {
 		
 		log.info("Find all users: page -> {}, size -> {}, sort: {}", pageable.getPageNumber(), pageable.getPageSize(), pageable.getSort());
 		model.addAttribute("users", userRepository.findAll(pageable));
-		Thread.sleep(1000);
+		Thread.sleep(500);
 		
 		return "user/index";
 	}
