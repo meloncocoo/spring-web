@@ -2,13 +2,13 @@ logging:
   file: testFile.log
   level:
     root: INFO
-    sun.rmi: false
+#    sun.rmi: false
 #    org.springframework: false
 #    org.springframework.boot: false
-    freemarker.cache: false
-    org.hibernate: false
-    org.apache: false
-    javax.activation: false
+#    freemarker.cache: false
+#    org.hibernate: false
+#    org.apache: false
+#    javax.activation: false
 spring:
   datasource:
     dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
@@ -34,3 +34,7 @@ spring:
 security:
   basic:
     enabled: false
+    
+server:
+  session:
+    timeout: 10

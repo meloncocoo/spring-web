@@ -76,9 +76,20 @@ var Melon = function() {
             $.unblockUI();
         }
     };
+    
+    var ajaxSessionTimeout = function() {
+    	setTimeout(function() {
+        	window.location.reload();
+    	}, 500);
+    }
 	
 	// initializes main settings
 	var handleInit = function() {
+		$.ajaxSetup({
+			statusCode: {
+				401: ajaxSessionTimeout
+			}
+		});
 		$(document).ajaxStart ? $(document).ajaxStart(function() {
 			blockUI()
 		}).ajaxStop(function() {

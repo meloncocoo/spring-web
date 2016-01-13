@@ -13,12 +13,16 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import mln.spring.security.Http401UnauthorizedEntryPoint;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Inject
 	private UserDetailsService userDetailsService;
+	
+	private Http401UnauthorizedEntryPoint authenticationEntryPoint;
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -33,9 +37,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		
+		if (null == authenticationEntryPoint) {
+			authenticationEntryPoint = new Http401UnauthorizedEntryPoint("/account");
+		}
+		
 		http
+			.exceptionHandling()
+			.authenticationEntryPoint(authenticationEntryPoint)
+		.and()
 			.formLogin()
-			.loginPage("/account")
+//			.loginPage("/account")
 			.loginProcessingUrl("/login")
 			.permitAll()
 		.and()
