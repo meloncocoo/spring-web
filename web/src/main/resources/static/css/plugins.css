@@ -1229,9 +1229,9 @@ Dashboard Charts(new in v1.2.1)
   margin: 0 auto;
   position: relative;
   text-align: center;
-  width: 75px;
-  height: 75px;
-  line-height: 75px;
+  width: 125px;
+  height: 125px;
+  line-height: 125px;
 }
 .easy-pie-chart .number canvas {
   position: absolute;

@@ -123,12 +123,17 @@ var Melon = function() {
     		$(this).append("<span class='selected'></span>");
     	});
     }
+    
+    var handleEvents = function() {
+    	
+    }
 
     return {
     	init: function() {
 	    	handleInit();
 	    	handleUniform();
 	    	handleHorMenu();
+	    	handleEvents();
     	},
     	blockUI: function(options) {
     		blockUI(options);
@@ -205,6 +210,103 @@ var Melon = function() {
         }
     };
 }();
+
+var mln = {};
+mln.Event = {
+	root: $(document),
+	events: [],
+	register: function(name, target) {
+		var event = $.Event(name, {
+			relatedTarget: $(target) | this.root
+		})
+		this.events.push(event);
+	}
+};
+
+mln.Event.AJAX_START = 'mln.ajax.start';
+mln.Event.AJAX_STOP = 'mln.ajax.stop';
+mln.Event.AJAX_ERROR = 'mln.ajax.error';
+mln.Event.AJAX_401_ERROR = 'mln.ajax.401.error';
+mln.Event.AJAX_403_ERROR = 'mln.ajax.403.error';
+mln.Event.AJAX_404_ERROR = 'mln.ajax.404.error';
+
+mln.BlockUI = {
+	templ: $('<div />'),
+//    html = '';
+//    if (options.iconOnly) {
+//        html = '<div class="loading-message ' + (options.boxed ? 'loading-message-boxed' : '')+'"><img src="' + globalImgPath + 'loading-spinner-grey.gif" align=""></div>';
+//    } else if (options.textOnly) {
+//        html = '<div class="loading-message ' + (options.boxed ? 'loading-message-boxed' : '')+'"><span>&nbsp;&nbsp;' + (options.message ? options.message : 'LOADING...') + '</span></div>';
+//    } else {    
+//        html = '<div class="loading-message ' + (options.boxed ? 'loading-message-boxed' : '')+'"><img src="' + globalImgPath + 'loading-spinner-grey.gif" align=""><span>&nbsp;&nbsp;' + (options.message ? options.message : 'LOADING...') + '</span></div>';
+//    }
+	show: function(optons) {
+		alert('show');
+	},
+	hide: function() {
+		alert('hide');
+	},
+	init: function() {
+		$(document).on(mln.Event.AJAX_START, $.proxy(function() {
+			this.show();
+		}, this)).on(mln.Event.AJAX_STOP, $.proxy(function() {
+			this.hide();
+		}, this));
+	}
+};
+
+mln.Global = {
+	init: function() {
+		this._initEvents();
+		this._initAjax();
+		this._handleEvent();
+	},
+	_initEvents: function() {
+		mln.Event.register(mln.Event.AJAX_START);
+		mln.Event.register(mln.Event.AJAX_STOP);
+		mln.Event.register(mln.Event.AJAX_ERROR);
+		mln.Event.register(mln.Event.AJAX_401_ERROR);
+		mln.Event.register(mln.Event.AJAX_403_ERROR);
+		mln.Event.register(mln.Event.AJAX_404_ERROR);
+	},
+	_initAjax: function() {
+		var $el = $(document);
+		$.ajaxSetup({
+			statusCode: {
+				401: function() {
+					$el.trigger(mln.Event.AJAX_401_ERROR);
+				},
+				403: function() {
+					$el.trigger(mln.Event.AJAX_403_ERROR);
+				},
+				404: function() {
+					$el.trigger(mln.Event.AJAX_404_ERROR);
+				}
+			}
+		});
+		$(document).ajaxStart(function() {
+			$el.trigger(mln.Event.AJAX_START);
+		}).ajaxStop(function() {
+			$el.trigger(mln.Event.AJAX_STOP);
+		}).ajaxError(function(event, request, settings) {
+			$el.trigger(mln.Event.AJAX_ERROR);
+		});
+	},
+	_handleEvent: function() {
+		var $el = $(document);
+		$el.on(mln.Event.AJAX_401_ERROR, function() {
+			setTimeout(function() {
+	        	window.location.reload();
+	    	}, 500);
+		});
+	}
+};
+
+$(document).ready(function() {
+	Melon.init();
+//	mln.Global.init();
+//	mln.BlockUI.init();
+});
 
 /* ========================================================================
  * Melon-jQuery: Ajax.js v1.0.1
@@ -284,7 +386,3 @@ var Melon = function() {
 	    Plugin.call($this, 'request');
 	});
 }(jQuery);
-
-jQuery(document).ready(function() {
-	Melon.init();
-});
